@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,15 +9,64 @@
     android:orientation="vertical"
     >
 
-    <Button
-        android:id="@+id/show_btn"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:id="@+id/rl_btn"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Search"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        />
+        android:padding="10dp"
+        >
+
+        <Button
+            android:id="@+id/btn_show"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:text="Bluetooth Search"
+            android:layout_gravity="center"
+            android:textAllCaps="false"
+            android:background="@color/pastel_blue"
+            android:textColor="@color/white"
+            android:layout_marginBottom="10dp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn_show"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:gravity="center_vertical"
+            >
+
+            <TextView
+                android:id="@+id/tv_building"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:textColor="@color/black"
+                android:text="Building"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:gravity="center"
+                android:background="@color/light_gray"
+                android:layout_marginRight="5dp"
+                />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/edit_room"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Room"
+                android:textColor="@color/profile_content"
+                android:layout_marginLeft="5dp"
+                app:met_singleLineEllipsis="true"
+                app:met_primaryColor="@color/profile_content"
+                />
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView
         android:layout_height="match_parent"
@@ -25,7 +74,32 @@
         android:id="@+id/rv"
         android:clipToPadding="false"
         android:clipChildren="false"
+        android:layout_below="@+id/rl_btn"
+        android:layout_above="@+id/tv_status"
+        android:layout_marginBottom="10dp"
         >
     </android.support.v7.widget.RecyclerView>
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/tv_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:layout_above="@+id/btn_submit"
+        android:text="Status"
+        android:gravity="center"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        />
+
+    <Button
+        android:id="@+id/btn_submit"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/pastel_orange"
+        android:text="Submit"
+        android:textColor="@color/white"
+        />
+
+</RelativeLayout>
